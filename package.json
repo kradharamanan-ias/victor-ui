@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "static-server",
+    "build": "jspm bundle-sfx js/main.js dist/main.js && cp -r ./css dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,0 +1,33 @@
+.panel {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-color: #ccc;
+  color: #999;
+  border-radius: 15px;
+  font-size: 26px;
+  margin: 5px 5px 0 0;
+  text-align: center;
+  line-height: 150px;
+}
+
+.panel:hover {
+  background-color: #aaa;
+}
+
+.full-form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-weight: bold;
+  z-index: 10;
+}
+
