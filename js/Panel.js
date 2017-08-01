@@ -9,7 +9,10 @@ export default class Panel {
   }
 
   view(vnode) {
-    return m('div', {class: 'panel', onclick: this.onclick}, vnode.attrs.idx);
+    return m('div', {
+      class: 'panel',
+      onclick: this.onclick
+    }, vnode.attrs.idx);
   }
 
 }
