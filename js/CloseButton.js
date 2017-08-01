@@ -5,11 +5,14 @@ export default class AddPanelForm {
   constructor() {}
 
   onclick(attrs) {
-    attrs.isVisible = false;
+    m.route.set('/');
   }
 
   view(vnode) {
-    return m('div', {class: 'close-button', onclick: this.onclick.bind(vnode, vnode.attrs)}, 'x');
+    return m('div', {
+      class: 'close-button',
+      onclick: this.onclick
+    }, 'x');
   }
 
 }

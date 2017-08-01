@@ -6,8 +6,8 @@ export default class AddPanelForm {
   constructor() {}
 
   view(vnode) {
-    return m('div', {class: 'full-form'}, [
-      m(CloseButton, {isVisible: vnode.attrs.isVisible}),
+    return m('div', {class: 'container'}, [
+      m(CloseButton),
       m('div', 'field1'),
       m('div', 'field2'),
       m('div', 'field3')

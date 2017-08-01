@@ -1,8 +1,12 @@
 import m from 'mithril';
 import Index from './Index.js';
+import AddPanelForm from './AddPanelForm.js';
 
 void function() {
 
-  m.mount(document.getElementById('app'), Index);
+  m.route(document.getElementById('app'), '/', {
+    '/': Index,
+    '/addReport': AddPanelForm
+  });
 
 }();

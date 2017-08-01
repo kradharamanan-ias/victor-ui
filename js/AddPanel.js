@@ -5,13 +5,14 @@ export default class AddPanel {
   constructor() {}
 
   onclick(attrs) {
-    attrs.showAddPanelForm = true;
+    m.route.set('/addReport');
   }
 
   view(vnode) {
+
     return m('div', {
       class: 'panel',
-      onclick: this.onclick.bind(vnode, vnode.attrs)
+      onclick: this.onclick
     }, '+');
   }
 
