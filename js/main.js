@@ -3,6 +3,6 @@ import Index from './Index.js';
 
 void function() {
 
-  m.render(document.getElementById('app'), m(Index));
+  m.mount(document.getElementById('app'), Index);
 
 }();
