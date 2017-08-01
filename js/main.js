@@ -3,8 +3,6 @@ import Index from './Index.js';
 
 void function() {
 
-  m.route(document.body, "/", {
-    "/": Index
-  });
+  m.render(document.getElementById('app'), m(Index));
 
 }();
