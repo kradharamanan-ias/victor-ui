@@ -1,0 +1,32 @@
+{
+  "name": "victor-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamalasaurus/victor-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kamalasaurus/victor-ui/issues"
+  },
+  "homepage": "https://github.com/kamalasaurus/victor-ui#readme",
+  "dependencies": {},
+  "jspm": {
+    "dependencies": {
+      "css": "npm:jspm-loader-css-modules@^1.0.1-beta1",
+      "mithril": "npm:mithril@^1.1.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
