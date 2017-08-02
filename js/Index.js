@@ -21,8 +21,6 @@ export default class Index {
 
     const addPanel = m(AddPanel);
 
-    console.log(vnode.state.reports);
-
     const panels = vnode.state.reports
       .map((report) => m(Panel, report))
       .concat(addPanel);

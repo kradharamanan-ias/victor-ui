@@ -1,19 +1,67 @@
 .panel {
   position: relative;
   display: inline-block;
-  width: 150px;
-  height: 150px;
-  background-color: #ccc;
-  color: #999;
+  width: 250px;
+  height: 350px;
+  background-color: #ddd;
+  color: #666;
   border-radius: 15px;
-  font-size: 26px;
+  font-size: 13px;
   margin: 5px 5px 0 0;
-  text-align: center;
-  line-height: 150px;
+  padding: 15px;
+  /*box-sizing: border-box;*/
+  vertical-align: top;
+  overflow: hidden;
 }
 
 .panel:hover {
-  background-color: #aaa;
+  background-color: cornsilk;
+}
+
+.panel .header {
+  margin: -15px 0 15px -15px;
+  width: 280px;
+  height: 3em;
+}
+
+.panel.attached_reports .header {
+  background-color: teal;
+  content: "attached reports";
+}
+
+.panel.embedded_reports .header {
+  background-color: indianred;
+  content: "embedded reports";
+}
+
+.panel.delivered_reports .header {
+  background-color: slateblue;
+}
+
+.panel .header:after {
+  color: white;
+  font-weight: bold;
+  line-height: 3em;
+  padding-left: 15px;
+}
+
+.panel.attached_reports .header:after {
+  content: "attached report";
+}
+
+.panel.embedded_reports .header:after {
+  content: "embedded report";
+}
+
+.panel.delivered_reports .header:after {
+  content: "delivered report";
+}
+
+.add-panel {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 350px;
 }
 
 .full-form {

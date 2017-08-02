@@ -11,7 +11,7 @@ export default class AddPanel {
   view(vnode) {
 
     return m('div', {
-      class: 'panel',
+      class: 'panel add-panel',
       onclick: this.onclick
     }, '+');
   }
