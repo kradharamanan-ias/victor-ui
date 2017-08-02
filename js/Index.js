@@ -19,7 +19,6 @@ export default class Index {
 
   view(vnode) {
 
-    const reportTypes = ['attached', 'embedded', 'delivered'];
     const addPanel = m(AddPanel);
 
     console.log(vnode.state.reports);
