@@ -6,20 +6,37 @@ export default class Index {
 
   constructor() {}
 
-  *getReports() {
-    yield m.request('/codd/v1/templates');
+  oninit(vnode) {
+    vnode.state.reports = Promise.all([
+      m.request('http://69.164.208.35:14142/codd/v1/attached_reports'),
+      m.request('http://69.164.208.35:14142/codd/v1/embedded_reports'),
+      m.request('http://69.164.208.35:14142/codd/v1/delivered_reports')
+    ]);
   }
 
   view(vnode) {
-    // reports shoudl replace the arbitrary array constructor in panels
-    //let reports = this.getReports();
+
+    const reportTypes = ['attached', 'embedded', 'delivered'];
     const addPanel = m(AddPanel);
 
-    const panels = Array.from(Array(70))
-      .map((_, idx) => m(Panel, {idx}))
-      .concat(addPanel);
+    return vnode.state.reports
+      .then(function(reports) {
+        const panels = reports
+          .reduce((out, reportList, i) => {
+            let list = reportList.map((report) => {
+              report['_reportType'] = reportType[i];
+              return report;
+            })
+            return out.concat(list);
+          }, [])
+          .map((report) => m(Panel, report))
+          .concat(addPanel);
 
-    return m('div', {class: 'container'}, panels);
+        debugger;
+
+        return m('div', {class: 'container'}, panels);
+      });
+
   }
 
 }
