@@ -10,8 +10,11 @@ export default class Index {
 
   oninit(vnode) {
     vnode.state.reports = [];
-    return API.getReports()
-      .then((reports) => vnode.state.reports = reports);
+    API.getReports()
+      .then((reports) => {
+        vnode.state.reports = reports;
+        m.redraw();
+      });
   }
 
   view(vnode) {
