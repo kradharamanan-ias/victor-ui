@@ -2,41 +2,40 @@ import m from 'mithril';
 import Panel from './Panel.js';
 import AddPanel from './AddPanel.js';
 
+import Connector from './Connector.js';
+
 export default class Index {
 
   constructor() {}
 
-  oninit(vnode) {
-    vnode.state.reports = Promise.all([
-      m.request('http://69.164.208.35:14142/codd/v1/attached_reports'),
-      m.request('http://69.164.208.35:14142/codd/v1/embedded_reports'),
-      m.request('http://69.164.208.35:14142/codd/v1/delivered_reports')
-    ]);
+
+  *_render(vnode) {
+    const reportTypes = ['attached', 'embedded', 'delivered'];
+    const addPanel = m(AddPanel);
+
+    let reports = yield Connector.getReports();
+
+    let panels = reports
+      .map((report) => m(Panel, report))
+      .concat(addPanel);
+
+    return m('div', {class: 'container'}, panels);
   }
 
   view(vnode) {
 
-    const reportTypes = ['attached', 'embedded', 'delivered'];
-    const addPanel = m(AddPanel);
+    //const reportTypes = ['attached', 'embedded', 'delivered'];
+    //const addPanel = m(AddPanel);
 
-    return vnode.state.reports
-      .then(function(reports) {
-        const panels = reports
-          .reduce((out, reportList, i) => {
-            let list = reportList.map((report) => {
-              report['_reportType'] = reportType[i];
-              return report;
-            })
-            return out.concat(list);
-          }, [])
-          .map((report) => m(Panel, report))
-          .concat(addPanel);
+    //let reports = yield Connector.getReports();
 
-        debugger;
+    //let panels = reports
+      //.map((report) => m(Panel, report))
+      //.concat(addPanel);
 
-        return m('div', {class: 'container'}, panels);
-      });
+    //return m('div', {class: 'container'}, panels);
 
+    return this._render.call(this, vnode);
   }
 
 }
