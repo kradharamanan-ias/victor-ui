@@ -1,8 +1,10 @@
-export default class Connector {
+import m from 'mithril';
+
+class API {
 
   constructor() {}
 
-  *getReports() {
+  getReports() {
 
     return Promise.all([
       m.request('http://69.164.208.35:14142/codd/v1/attached_reports'),
@@ -28,4 +30,6 @@ export default class Connector {
   }
 
 }
+
+export default new API();
 

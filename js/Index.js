@@ -2,40 +2,30 @@ import m from 'mithril';
 import Panel from './Panel.js';
 import AddPanel from './AddPanel.js';
 
-import Connector from './Connector.js';
+import API from './API.js';
 
 export default class Index {
 
   constructor() {}
 
-
-  *_render(vnode) {
-    const reportTypes = ['attached', 'embedded', 'delivered'];
-    const addPanel = m(AddPanel);
-
-    let reports = yield Connector.getReports();
-
-    let panels = reports
-      .map((report) => m(Panel, report))
-      .concat(addPanel);
-
-    return m('div', {class: 'container'}, panels);
+  oninit(vnode) {
+    vnode.state.reports = [];
+    return API.getReports()
+      .then((reports) => vnode.state.reports = reports);
   }
 
   view(vnode) {
 
-    //const reportTypes = ['attached', 'embedded', 'delivered'];
-    //const addPanel = m(AddPanel);
+    const reportTypes = ['attached', 'embedded', 'delivered'];
+    const addPanel = m(AddPanel);
 
-    //let reports = yield Connector.getReports();
+    console.log(vnode.state.reports);
 
-    //let panels = reports
-      //.map((report) => m(Panel, report))
-      //.concat(addPanel);
+    const panels = vnode.state.reports
+      .map((report) => m(Panel, report))
+      .concat(addPanel);
 
-    //return m('div', {class: 'container'}, panels);
-
-    return this._render.call(this, vnode);
+    return m('div', {class: 'container'}, panels);
   }
 
 }
